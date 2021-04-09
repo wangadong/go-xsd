@@ -3,11 +3,11 @@ package main
 import (
 	"encoding/xml"
 
-	"github.com/metaleap/go-xsd/xsd-makepkg/tests"
+	"github.com/wangadong/goxsd/xsd-makepkg/tests"
 
-	"github.com/metaleap/go-util/dev/go"
+	udevgo "github.com/wangadong/goxsd/goutil/dev/go"
 
-	svg "github.com/metaleap/go-xsd-pkg/www.w3.org/TR/2002/WD-SVG11-20020108/SVG.xsd_go"
+	svg "github.com/wangadong/goxsd-pkg/www.w3.org/TR/2002/WD-SVG11-20020108/SVG.xsd_go"
 )
 
 type SvgDoc struct {

@@ -3,11 +3,11 @@ package main
 import (
 	"encoding/xml"
 
-	"github.com/metaleap/go-xsd/xsd-makepkg/tests"
+	"github.com/wangadong/goxsd/xsd-makepkg/tests"
 
-	"github.com/metaleap/go-util/dev/go"
+	udevgo "github.com/wangadong/goxsd/goutil/dev/go"
 
-	kml "github.com/metaleap/go-xsd-pkg/schemas.opengis.net/kml/2.2.0/ogckml22.xsd_go"
+	kml "github.com/wangadong/goxsd-pkg/schemas.opengis.net/kml/2.2.0/ogckml22.xsd_go"
 )
 
 type KmlDoc struct {

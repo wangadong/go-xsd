@@ -3,11 +3,11 @@ package main
 import (
 	"encoding/xml"
 
-	"github.com/metaleap/go-xsd/xsd-makepkg/tests"
+	"github.com/wangadong/goxsd/xsd-makepkg/tests"
 
-	"github.com/metaleap/go-util/dev/go"
+	udevgo "github.com/wangadong/goxsd/goutil/dev/go"
 
-	atom "github.com/metaleap/go-xsd-pkg/kbcafe.com/rss/atom.xsd.xml_go"
+	atom "github.com/wangadong/goxsd-pkg/kbcafe.com/rss/atom.xsd.xml_go"
 )
 
 type AtomEntryDoc struct {
