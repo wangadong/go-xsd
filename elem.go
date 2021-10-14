@@ -1,7 +1,7 @@
 package xsd
 
 import (
-	xsdt "github.com/wangadong/goxsd/types"
+	xsdt "github.com/wangadong/go-xsd/types"
 )
 
 type element interface {

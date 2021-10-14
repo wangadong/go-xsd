@@ -1,6 +1,6 @@
 # xsdt
 --
-    import "github.com/wangadong/goxsd/types"
+    import "github.com/wangadong/go-xsd/types"
 
 A tiny package imported by all "go-xsd"-generated packages.
 

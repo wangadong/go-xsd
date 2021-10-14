@@ -6,9 +6,9 @@ import (
 	"os/exec"
 	"strings"
 
-	udevgo "github.com/wangadong/goxsd/goutil/dev/go"
+	udevgo "github.com/wangadong/go-xsd/goutil/dev/go"
 
-	xsd "github.com/wangadong/goxsd"
+	xsd "github.com/wangadong/go-xsd"
 )
 
 var (

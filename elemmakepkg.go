@@ -6,9 +6,9 @@ import (
 	"strings"
 	"unicode"
 
-	ustr "github.com/wangadong/goxsd/goutil/str"
+	ustr "github.com/wangadong/go-xsd/goutil/str"
 
-	xsdt "github.com/wangadong/goxsd/types"
+	xsdt "github.com/wangadong/go-xsd/types"
 )
 
 const (
@@ -80,7 +80,7 @@ func (me *Attribute) makePkg(bag *PkgBag) {
 			bag.attsKeys[me] = key
 			bag.attsCache[key] = tmp
 			var td = bag.addType(me, tmp, "", me.Annotation)
-			td.addField(me, safeName, typeName, ustr.Ifs(len(bag.Schema.TargetNamespace) > 0, bag.Schema.TargetNamespace.String()+" ", "")+me.Name.String()+",attr", me.Annotation)
+			td.addField(me, safeName, typeName, me.Name.String()+",attr", me.Annotation)
 			if isPt := bag.isParseType(typeName); len(defVal) > 0 {
 				doc := sfmt("Returns the %v value for %v -- "+ustr.Ifs(isPt, "%v", "%#v"), strings.ToLower(defName), safeName, defVal)
 				if isPt {
@@ -277,7 +277,7 @@ func (me *ComplexType) makePkg(bag *PkgBag) {
 				ctValueType = me.SimpleContent.RestrictionSimpleContent.SimpleTypes[0].Name.String()
 			}
 			for _, enum := range me.SimpleContent.RestrictionSimpleContent.Enumerations {
-				println("ENUMTODO!?! Whoever sees this message, please post an issue at github.com/wangadong/goxsd with a link to the XSD..." + enum.selfName().String())
+				println("ENUMTODO!?! Whoever sees this message, please post an issue at github.com/wangadong/go-xsd with a link to the XSD..." + enum.selfName().String())
 			}
 		}
 	}

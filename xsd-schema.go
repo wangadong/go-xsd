@@ -11,9 +11,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	ufs "github.com/wangadong/goxsd/goutil/fs"
-	unet "github.com/wangadong/goxsd/goutil/net"
-	ustr "github.com/wangadong/goxsd/goutil/str"
+	ufs "github.com/wangadong/go-xsd/goutil/fs"
+	unet "github.com/wangadong/go-xsd/goutil/net"
+	ustr "github.com/wangadong/go-xsd/goutil/str"
 )
 
 const (

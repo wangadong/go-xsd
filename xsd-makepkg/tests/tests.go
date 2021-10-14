@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	ufs "github.com/wangadong/goxsd/goutil/fs"
+	ufs "github.com/wangadong/go-xsd/goutil/fs"
 
 	xmlx "github.com/go-forks/go-pkg-xmlx"
 )

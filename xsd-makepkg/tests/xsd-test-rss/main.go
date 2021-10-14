@@ -3,11 +3,11 @@ package main
 import (
 	"encoding/xml"
 
-	"github.com/wangadong/goxsd/xsd-makepkg/tests"
+	"github.com/wangadong/go-xsd/xsd-makepkg/tests"
 
-	udevgo "github.com/wangadong/goxsd/goutil/dev/go"
+	udevgo "github.com/wangadong/go-xsd/goutil/dev/go"
 
-	rss "github.com/wangadong/goxsd-pkg/thearchitect.co.uk/schemas/rss-2_0.xsd_go"
+	rss "github.com/wangadong/go-xsd-pkg/thearchitect.co.uk/schemas/rss-2_0.xsd_go"
 )
 
 type RssDoc struct {
