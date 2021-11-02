@@ -3,10 +3,9 @@ package main
 import (
 	"encoding/xml"
 	"log"
+	"path/filepath"
 
 	"github.com/wangadong/go-xsd/xsd-makepkg/tests"
-
-	udevgo "github.com/wangadong/go-xsd/goutil/dev/go"
 
 	collada14 "github.com/wangadong/go-xsd-pkg/khronos.org/files/collada_schema_1_4_go"
 	collada15 "github.com/wangadong/go-xsd-pkg/khronos.org/files/collada_schema_1_5_go"
@@ -24,9 +23,9 @@ type Col15Doc struct {
 
 func main() {
 	var (
-		col14DirBasePath  = udevgo.GopathSrcGithub("metaleap", "go-xsd", "xsd-makepkg", "tests", "xsd-test-collada", "1.4.1")
+		col14DirBasePath  = filepath.Join(tests.GetExecutableDir(), "1.4.1")
 		col14MakeEmptyDoc = func() interface{} { return &Col14Doc{} }
-		col15DirBasePath  = udevgo.GopathSrcGithub("metaleap", "go-xsd", "xsd-makepkg", "tests", "xsd-test-collada", "1.5")
+		col15DirBasePath  = filepath.Join(tests.GetExecutableDir(), "1.5")
 		col15MakeEmptyDoc = func() interface{} { return &Col15Doc{} }
 	)
 	if false {

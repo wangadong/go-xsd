@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unicode"
 
-	ustr "github.com/wangadong/go-xsd/goutil/str"
+	ustr "github.com/wangadong/go-xsd/util"
 
 	xsdt "github.com/wangadong/go-xsd/types"
 )

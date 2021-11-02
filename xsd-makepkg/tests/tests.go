@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"log"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -92,6 +93,15 @@ func verifyNode(orig, faks *xmlx.Node) (errs []error) {
 		}
 	}
 	return
+}
+
+func GetExecutableDir() string {
+	ex, err := os.Executable()
+	if err != nil {
+		panic(err)
+	}
+	exPath := filepath.Dir(ex)
+	return exPath
 }
 
 //	Attempts to xml.Unmarshal() all files in the "infiles" sub-directory of the specified directory path into the interface{} structure returned by the specified constructor.

@@ -11,9 +11,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	ufs "github.com/wangadong/go-xsd/goutil/fs"
-	unet "github.com/wangadong/go-xsd/goutil/net"
-	ustr "github.com/wangadong/go-xsd/goutil/str"
+	util "github.com/wangadong/go-xsd/util"
 )
 
 const (
@@ -101,7 +99,7 @@ func (me *Schema) collectGlobals(bag *PkgBag, loadedSchemas map[string]bool) {
 func (me *Schema) globalComplexType(bag *PkgBag, name string, loadedSchemas map[string]bool) (ct *ComplexType) {
 	var imp string
 	for _, ct = range me.ComplexTypes {
-		if bag.resolveQnameRef(ustr.PrefixWithSep(me.XMLNamespacePrefix, ":", ct.Name.String()), "T", &imp) == name {
+		if bag.resolveQnameRef(util.PrefixWithSep(me.XMLNamespacePrefix, ":", ct.Name.String()), "T", &imp) == name {
 			return
 		}
 	}
@@ -116,25 +114,6 @@ func (me *Schema) globalComplexType(bag *PkgBag, name string, loadedSchemas map[
 		}
 	}
 	ct = nil
-	return
-}
-
-func (me *Schema) globalElement(bag *PkgBag, name string) (el *Element) {
-	var imp string
-	if len(name) > 0 {
-		var rname = bag.resolveQnameRef(name, "", &imp)
-		for _, el = range me.Elements {
-			if bag.resolveQnameRef(ustr.PrefixWithSep(me.XMLNamespacePrefix, ":", el.Name.String()), "", &imp) == rname {
-				return
-			}
-		}
-		for _, ss := range me.XMLIncludedSchemas {
-			if el = ss.globalElement(bag, name); el != nil {
-				return
-			}
-		}
-	}
-	el = nil
 	return
 }
 
@@ -174,8 +153,8 @@ func (me *Schema) MakeGoPkgSrcFile() (goOutFilePath string, err error) {
 	me.hasElemAnnotation.makePkg(bag)
 	bag.appendFmt(true, "")
 	me.makePkg(bag)
-	if err = ufs.EnsureDirExists(filepath.Dir(goOutFilePath)); err == nil {
-		err = ufs.WriteTextFile(goOutFilePath, bag.assembleSource())
+	if err = util.EnsureDirExists(filepath.Dir(goOutFilePath)); err == nil {
+		err = util.WriteTextFile(goOutFilePath, bag.assembleSource())
 	}
 	return
 }
@@ -291,9 +270,9 @@ func LoadSchema(uri string, localCopy bool) (sd *Schema, err error) {
 		uri = uri[pos+len(protSep):]
 	}
 	if localCopy {
-		if localPath = filepath.Join(PkgGen.BaseCodePath, uri); !ufs.FileExists(localPath) {
-			if err = ufs.EnsureDirExists(filepath.Dir(localPath)); err == nil {
-				err = unet.DownloadFile(protocol+uri, localPath)
+		if localPath = filepath.Join(PkgGen.BaseCodePath, uri); !util.FileExists(localPath) {
+			if err = util.EnsureDirExists(filepath.Dir(localPath)); err == nil {
+				err = util.DownloadFile(protocol+uri, localPath)
 			}
 		}
 		if err == nil {
@@ -301,7 +280,7 @@ func LoadSchema(uri string, localCopy bool) (sd *Schema, err error) {
 				sd.loadLocalPath = localPath
 			}
 		}
-	} else if rc, err = unet.OpenRemoteFile(protocol + uri); err == nil {
+	} else if rc, err = util.OpenRemoteFile(protocol + uri); err == nil {
 		defer rc.Close()
 		sd, err = loadSchema(rc, uri, "")
 	}

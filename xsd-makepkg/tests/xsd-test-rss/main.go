@@ -5,7 +5,7 @@ import (
 
 	"github.com/wangadong/go-xsd/xsd-makepkg/tests"
 
-	udevgo "github.com/wangadong/go-xsd/goutil/dev/go"
+	util "github.com/wangadong/go-xsd/util"
 
 	rss "github.com/wangadong/go-xsd-pkg/thearchitect.co.uk/schemas/rss-2_0.xsd_go"
 )
@@ -17,7 +17,7 @@ type RssDoc struct {
 
 func main() {
 	var (
-		dirBasePath  = udevgo.GopathSrcGithub("metaleap", "go-xsd", "xsd-makepkg", "tests", "xsd-test-rss")
+		dirBasePath  = util.GopathSrcGithub("metaleap", "go-xsd", "xsd-makepkg", "tests", "xsd-test-rss")
 		makeEmptyDoc = func() interface{} { return &RssDoc{} }
 	)
 	tests.TestViaRemarshal(dirBasePath, makeEmptyDoc)
